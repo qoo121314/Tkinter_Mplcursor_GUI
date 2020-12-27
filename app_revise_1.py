@@ -490,13 +490,26 @@ def save_table():
     
 
 def load_table():
-    global  ui_df, pos_df
+    global  ui_df, pos_df, combo_choices, combo_choices1, combo_choices2, combo_choices3, combo_box, combo_box1, combo_box2, combo_box3, combo_box, combo_box1, combo_box2, combo_box3
     
     csv_file_path = askopenfilename()
     
     df = pd.read_csv(csv_file_path)
     pos_df = df.copy()
     ui_df = df.copy()
+    combo_choices = ['選擇開始日期']+list(np.unique(df.成交日期))
+    combo_choices1 = ['選擇交易方式']+list(np.unique(df.交易方式))
+    combo_choices2 = ['選擇證券代號']+list(np.unique(df.證券代號))
+    combo_choices3 = ['選擇結束日期']+list(np.unique(df.成交日期))
+    combo_box['values'] = combo_choices
+    combo_box1['values'] = combo_choices1
+    combo_box2['values'] = combo_choices2
+    combo_box3['values'] = combo_choices3
+    combo_box.set("選擇開始日期")
+    combo_box1.set("選擇交易方式")
+    combo_box2.set("選擇證券代號")
+    combo_box3.set("選擇結束日期")
+    
     
 
     
